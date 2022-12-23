@@ -43,4 +43,24 @@ buffer["visible?"] = function(bufname)
     return nil
   end
 end
+buffer["get-var!"] = function(bufnr, variable, _3fdefault)
+  local _6_, _7_ = pcall(vim.api.nvim_buf_get_var, bufnr, variable)
+  if ((_6_ == true) and (nil ~= _7_)) then
+    local val = _7_
+    return val
+  elseif true then
+    local _ = _6_
+    if _3fdefault then
+      vim.api.nvim_buf_set_var(bufnr, variable, _3fdefault)
+      return vim.api.nvim_buf_get_var(bufnr, variable)
+    else
+      return nil
+    end
+  else
+    return nil
+  end
+end
+buffer["line-length"] = function(bufnr, linenr)
+  return #psl.first(vim.api.nvim_buf_get_lines(bufnr, (linenr - 1), linenr, false))
+end
 return buffer

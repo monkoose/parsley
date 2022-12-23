@@ -36,4 +36,23 @@
     -1 nil
     winid (values true winid)))
 
+;;; BufNr string ?any -> ?any
+(fn buffer.get-var! [bufnr variable ?default]
+  "Returns value of a buffer variable `b:`.
+  Unlike `vim.api.nvim_buf_get_var()` if this option can't be found
+  returns `?default` value."
+  (match (pcall vim.api.nvim_buf_get_var bufnr variable)
+    (true val) val
+    _          (when ?default
+                 (vim.api.nvim_buf_set_var
+                   bufnr variable ?default)
+                 (vim.api.nvim_buf_get_var bufnr variable))))
+
+;;; BufNr LineNr -> integer
+(fn buffer.line-length [bufnr linenr]
+  "Returns length of the `linenr` of the buffer with `bufnr`.
+  Also can be interpreted as the last column of the line."
+  (length (psl.first (vim.api.nvim_buf_get_lines
+                       bufnr (- linenr 1) linenr false))))
+
 buffer

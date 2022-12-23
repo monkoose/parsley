@@ -29,6 +29,10 @@
 (fn first [xs]
   (. xs 1))
 
+;;; [any] -> any
+(fn second [xs]
+  (. xs 2))
+
 (fn map [func xs]
   (icollect [_ x (ipairs xs)]
     (func x)))
@@ -53,6 +57,7 @@
  : odd?
  : empty?
  : first
+ : second
  : map
  : filter
  : echo}
