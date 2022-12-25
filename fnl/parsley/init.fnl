@@ -42,12 +42,9 @@
     (when (func x)
       x)))
 
-;;; string ->
-(fn echo [str]
-(vim.api.nvim_echo
-  [["nvlime: " "String"]
-   [str "WarningMsg"]]
-  false {}))
+;;; ...[string] ->
+(fn echo [...]
+  (vim.api.nvim_echo [...] false {}))
 
 {: null?
  : string?

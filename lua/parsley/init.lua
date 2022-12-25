@@ -56,7 +56,7 @@ local function filter(func, xs)
   end
   return tbl_17_auto
 end
-local function echo(str)
-  return vim.api.nvim_echo({{"nvlime: ", "String"}, {str, "WarningMsg"}}, false, {})
+local function echo(...)
+  return vim.api.nvim_echo({...}, false, {})
 end
 return {["null?"] = null_3f, ["string?"] = string_3f, ["list?"] = list_3f, ["hash-table?"] = hash_table_3f, ["even?"] = even_3f, ["odd?"] = odd_3f, ["empty?"] = empty_3f, first = first, second = second, map = map, filter = filter, echo = echo}
