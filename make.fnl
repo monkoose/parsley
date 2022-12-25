@@ -2,4 +2,5 @@
   (build "./"
          "fnl/(.+)" (fn [p {: join-path}]
                       (when (not (string.find p "macros%.fnl$"))
-                        (join-path "./lua" p)))))
+                        (join-path "./lua" p)))
+         "(tests/.+)" #$))

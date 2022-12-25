@@ -11,9 +11,9 @@
   (vim.tbl_islist x))
 
 ;;; any -> bool
-(fn hash-table? [x]
-  (and (= (type x) "table")
-       (not (vim.tbl_islist x))))
+(fn hash-table? [t]
+  (and (= (type t) "table")
+       (= (length t) 0)))
 
 (fn even? [n]
   (= (% n 2) 0))
@@ -33,10 +33,12 @@
 (fn second [xs]
   (. xs 2))
 
+;;; (fn [any] any) [any] -> [any]
 (fn map [func xs]
   (icollect [_ x (ipairs xs)]
     (func x)))
 
+;;; (fn [any] bool) [any] -> [any]
 (fn filter [func xs]
   (icollect [_ x (ipairs xs)]
     (when (func x)

@@ -7,8 +7,8 @@ end
 local function list_3f(x)
   return vim.tbl_islist(x)
 end
-local function hash_table_3f(x)
-  return ((type(x) == "table") and not vim.tbl_islist(x))
+local function hash_table_3f(t)
+  return ((type(t) == "table") and (#t == 0))
 end
 local function even_3f(n)
   return ((n % 2) == 0)
