@@ -44,8 +44,8 @@
 (describe* "list?"
   (it* "returns true for a list (sequential table)"
     (assert.is_true (psl.list? [1 2 3]))
-    (assert.is_true (psl.list? [])))
-    (assert.is_true (psl.list? {}) "Empty hash table is a list")
+    (assert.is_true (psl.list? []))
+    (assert.is_true (psl.list? {}) "Empty hash table is a list"))
   (it* "returns false for not a list"
     (assert.is_false (psl.list? "hello"))
     (assert.is_false (psl.list? nil))
@@ -63,8 +63,8 @@
 
 (describe* "empty?"
   (it* "returns true for empty list or nil"
-    (assert.is_true (psl.empty? nil)
-    (assert.is_true (psl.empty? []))))
+    (assert.is_true (psl.empty? nil))
+    (assert.is_true (psl.empty? [])))
   (it* "returns false for not empty list"
     (assert.is_false (psl.empty? [1 2 3]))
     (assert.is_false (psl.empty? ["x"]))))

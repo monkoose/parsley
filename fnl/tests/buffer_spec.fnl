@@ -37,10 +37,10 @@
       (assert.is_false (psl-buf.empty? bufnr))
 
       (vim.api.nvim_buf_set_lines bufnr 0 -1 false ["   "])
-      (assert.is_false (psl-buf.empty? bufnr) "blank characters is still a content"))
+      (assert.is_false (psl-buf.empty? bufnr) "blank characters is still a content")
 
       (vim.api.nvim_buf_set_lines bufnr 0 -1 false ["" ""])
-      (assert.is_false (psl-buf.empty? bufnr) "blank lines is still a content"))
+      (assert.is_false (psl-buf.empty? bufnr) "blank lines is still a content")))
 
   (describe* "exists?"
     (local name "dummy")
@@ -48,7 +48,7 @@
     (it* "returns (values true bufnr) for existing buffer"
       (vim.cmd "edit dummy")
       (assert.same [(values true (vim.fn.bufnr name))]
-                      [(psl-buf.exists? name)]))
+                   [(psl-buf.exists? name)]))
 
     (it* "returns false for non-existing buffer"
       (assert.falsy (psl-buf.exists? name))))
