@@ -36,6 +36,7 @@
     -1 nil
     winid (values true winid)))
 
+;;; XXX: is it really correctly sets new default value?
 ;;; BufNr string ?any -> ?any
 (fn buffer.get-var! [bufnr variable ?default]
   "Returns value of a buffer variable `b:`.
