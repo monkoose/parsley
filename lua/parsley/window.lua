@@ -41,6 +41,10 @@ window.filetype = function(winid)
   return buffer.filetype(vim.api.nvim_win_get_buf(winid))
 end
 window["get-info"] = function(winid)
-  return vim.fn.getwininfo(winid)[1]
+  if vim.api.nvim_win_is_valid(winid) then
+    return vim.fn.getwininfo(winid)[1]
+  else
+    return error(("Can't retrieve info for the invalid window " .. winid))
+  end
 end
 return window

@@ -48,6 +48,8 @@
 (fn window.get-info [winid]
   "Returns hash-table with various information
   about window with `winid`"
-  (. (vim.fn.getwininfo winid) 1))
+  (if (vim.api.nvim_win_is_valid winid)
+      (. (vim.fn.getwininfo winid) 1)
+      (error (.. "Can't retrieve info for the invalid window " winid))))
 
 window
