@@ -6,6 +6,6 @@ local function _1_()
     assert.same({"hello"}, psl_list.concat({"hello"}))
     return assert.same({}, psl_list.concat({}))
   end
-  return it("correctly concatenate mulitple lists", _2_)
+  return it("correctly concatenates mulitple lists", _2_)
 end
 return describe("concat", _1_)

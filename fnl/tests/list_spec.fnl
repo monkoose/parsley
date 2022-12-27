@@ -2,7 +2,7 @@
 (local psl-list (require "parsley.list"))
 
 (describe* "concat"
-  (it* "correctly concatenate mulitple lists"
+  (it* "correctly concatenates mulitple lists"
     (assert.same [1 2 3 4 5 6]
                  (psl-list.concat [1 2] [3 4] [5 6]))
     (assert.same ["hello" "world"]
