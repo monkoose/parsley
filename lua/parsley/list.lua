@@ -29,4 +29,14 @@ local function concat(list, ...)
   end
   return result
 end
-return {concat = concat}
+local function reverse_21(list)
+  local list_len = #list
+  for i = 1, math.floor((list_len / 2)) do
+    local j = ((list_len - i) + 1)
+    local temp_i = list[i]
+    list[i] = list[j]
+    list[j] = temp_i
+  end
+  return list
+end
+return {concat = concat, ["reverse!"] = reverse_21}
