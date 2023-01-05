@@ -97,3 +97,9 @@
     (assert.same ["hello"]
                  (psl.filter #(string.find $ "^hell")
                              ["helio" "hello" "good"]))))
+
+(describe* "mod"
+  (it* "returns quotient and remainder"
+    (assert.equal (values 3 1) (psl.mod 10 3))
+    (assert.equal (values 0 3) (psl.mod 3 10))
+    (assert.equal (values 0 0) (psl.mod 0 3))))

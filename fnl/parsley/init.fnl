@@ -48,6 +48,13 @@
 (fn echo [...]
   (vim.api.nvim_echo [...] false {}))
 
+;;; integer integer -> (integer integer)
+(fn mod [divident divisor]
+  "Returns quotient and remainder which calculated from
+  a dividing of the divident by the divisor."
+  (values (math.floor (/ divident divisor))
+          (% divident divisor)))
+
 {: null?
  : string?
  : list?
@@ -59,4 +66,5 @@
  : second
  : map
  : filter
- : echo}
+ : echo
+ : mod}

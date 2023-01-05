@@ -147,4 +147,13 @@ local function _30_()
   end
   return it("returns correct list", _31_)
 end
-return describe("filter", _30_)
+describe("filter", _30_)
+local function _34_()
+  local function _35_()
+    assert.equal(3, psl.mod(10, 3))
+    assert.equal(0, psl.mod(3, 10))
+    return assert.equal(0, psl.mod(0, 3))
+  end
+  return it("returns quotient and remainder", _35_)
+end
+return describe("mod", _34_)
