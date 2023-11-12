@@ -1,7 +1,7 @@
 (import-macros {: describe* : it*} "parsley.busted.macros")
 (local psl (require "parsley"))
 
-(describe* "even?"nt table in which to run the
+(describe* "even?"
   (it* "returns true for even numbers"
     (assert.is_true (psl.even? 2))
     (assert.is_true (psl.even? 10))
