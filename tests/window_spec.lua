@@ -62,7 +62,7 @@ local function _1_()
   describe("filetype", _14_)
   local function _16_()
     local function _17_()
-      local wininfo = (vim.fn.getwininfo(0))[1]
+      local wininfo = vim.fn.getwininfo(0)[1]
       assert.same(wininfo, psl_win["get-info"](0))
       local function _18_()
         return psl_win["get-info"](333)

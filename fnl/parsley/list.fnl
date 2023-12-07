@@ -1,7 +1,7 @@
 ;;; [any] ... -> [any]
 (fn concat [list ...]
   "Returns a new list as a result of concatenating multiple lists."
-  (var result [])
+  (local result [])
   (icollect [_ val (ipairs list) &into result]
     val)
   (when ...

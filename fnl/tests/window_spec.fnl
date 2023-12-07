@@ -48,5 +48,4 @@
     (it* "returns info table for a valid window"
       (local wininfo (. (vim.fn.getwininfo 0) 1))
       (assert.same wininfo (psl-win.get-info 0))
-      (assert.has.error #(psl-win.get-info 333))))
-  )
+      (assert.has.error #(psl-win.get-info 333)))))
