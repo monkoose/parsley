@@ -30,11 +30,9 @@ window["get-height"] = function(winid)
   if ((_4_ == true) and (nil ~= _5_)) then
     local height = _5_
     return height
-  elseif true then
+  else
     local _ = _4_
     return 0
-  else
-    return nil
   end
 end
 window.filetype = function(winid)

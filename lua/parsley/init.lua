@@ -26,35 +26,35 @@ local function second(xs)
   return xs[2]
 end
 local function map(func, xs)
-  local tbl_17_auto = {}
-  local i_18_auto = #tbl_17_auto
+  local tbl_18_auto = {}
+  local i_19_auto = 0
   for _, x in ipairs(xs) do
-    local val_19_auto = func(x)
-    if (nil ~= val_19_auto) then
-      i_18_auto = (i_18_auto + 1)
-      do end (tbl_17_auto)[i_18_auto] = val_19_auto
+    local val_20_auto = func(x)
+    if (nil ~= val_20_auto) then
+      i_19_auto = (i_19_auto + 1)
+      do end (tbl_18_auto)[i_19_auto] = val_20_auto
     else
     end
   end
-  return tbl_17_auto
+  return tbl_18_auto
 end
 local function filter(func, xs)
-  local tbl_17_auto = {}
-  local i_18_auto = #tbl_17_auto
+  local tbl_18_auto = {}
+  local i_19_auto = 0
   for _, x in ipairs(xs) do
-    local val_19_auto
+    local val_20_auto
     if func(x) then
-      val_19_auto = x
+      val_20_auto = x
     else
-      val_19_auto = nil
+      val_20_auto = nil
     end
-    if (nil ~= val_19_auto) then
-      i_18_auto = (i_18_auto + 1)
-      do end (tbl_17_auto)[i_18_auto] = val_19_auto
+    if (nil ~= val_20_auto) then
+      i_19_auto = (i_19_auto + 1)
+      do end (tbl_18_auto)[i_19_auto] = val_20_auto
     else
     end
   end
-  return tbl_17_auto
+  return tbl_18_auto
 end
 local function echo(...)
   return vim.api.nvim_echo({...}, false, {})

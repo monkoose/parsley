@@ -4,22 +4,22 @@ buffer.filetype = function(bufnr)
   return vim.api.nvim_buf_get_option(bufnr, "filetype")
 end
 buffer["list-loaded"] = function()
-  local tbl_17_auto = {}
-  local i_18_auto = #tbl_17_auto
+  local tbl_18_auto = {}
+  local i_19_auto = 0
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    local val_19_auto
+    local val_20_auto
     if vim.api.nvim_buf_is_loaded(buf) then
-      val_19_auto = buf
+      val_20_auto = buf
     else
-      val_19_auto = nil
+      val_20_auto = nil
     end
-    if (nil ~= val_19_auto) then
-      i_18_auto = (i_18_auto + 1)
-      do end (tbl_17_auto)[i_18_auto] = val_19_auto
+    if (nil ~= val_20_auto) then
+      i_19_auto = (i_19_auto + 1)
+      do end (tbl_18_auto)[i_19_auto] = val_20_auto
     else
     end
   end
-  return tbl_17_auto
+  return tbl_18_auto
 end
 buffer["empty?"] = function(bufnr)
   local last_linenr = vim.api.nvim_buf_line_count(bufnr)
@@ -48,7 +48,7 @@ buffer["get-var!"] = function(bufnr, variable, _3fdefault)
   if ((_6_ == true) and (nil ~= _7_)) then
     local val = _7_
     return val
-  elseif true then
+  else
     local _ = _6_
     if _3fdefault then
       vim.api.nvim_buf_set_var(bufnr, variable, _3fdefault)
@@ -56,8 +56,6 @@ buffer["get-var!"] = function(bufnr, variable, _3fdefault)
     else
       return nil
     end
-  else
-    return nil
   end
 end
 buffer["line-length"] = function(bufnr, linenr)

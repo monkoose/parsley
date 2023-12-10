@@ -7,4 +7,47 @@
             (.. str " " (tostring s) ",")))]
     `(lua ,(.. "return" (return-values#:gsub ",$" "")))))
 
-{: return}
+(lambda iter-func? [funcname]
+  (vim.tbl_contains
+    [:all
+     :any
+     :each
+     :enumerate
+     :filter
+     :find
+     :fold
+     :last
+     :map
+     :next
+     :nextback
+     :nth
+     :nthback
+     :peek
+     :peekback
+     :rev
+     :rfind
+     :skip
+     :skipback
+     :slice
+     :totable]
+    funcname))
+
+(fn iter [it ...]
+  "Macro for `:h vim.iter`
+  Usage example:
+     `(iter [1 2 3]
+           (map #(* 3 $))
+           (rev)
+           (skip 2)
+           (totable))`"
+  (local result [])
+  (each [_ v# (ipairs [...])]
+    (assert-compile (list? v#) (.. "Expected list, but got " (type v#)) v#)
+    (let [func (tostring (table.remove v# 1))]
+      (assert-compile (iter-func? func) (.. "Not an Iter function `" func "`") func)
+      (table.insert result `(: ,func ,(unpack v#)))))
+  `(-> (vim.iter ,it)
+       ,(unpack result)))
+
+{: return
+ : iter}
