@@ -1,3 +1,4 @@
+;; fennel-ls: macro-file
 (fn return [...]
   (let [return-values#
         (accumulate [str "" _ s (ipairs [...])]
@@ -8,29 +9,15 @@
     `(lua ,(.. "return" (return-values#:gsub ",$" "")))))
 
 (lambda iter-func? [funcname]
-  (vim.tbl_contains
-    [:all
-     :any
-     :each
-     :enumerate
-     :filter
-     :find
-     :fold
-     :last
-     :map
-     :next
-     :nextback
-     :nth
-     :nthback
-     :peek
-     :peekback
-     :rev
-     :rfind
-     :skip
-     :skipback
-     :slice
-     :totable]
-    funcname))
+  (let [iter-names [:all :any :each :enumerate :filter :find
+                    :fold :last :map :next :nextback :nth
+                    :nthback :peek :peekback :rev :rfind :skip
+                    :skipback :slice :take :totable]]
+    (var result false)
+    (each [_ f (ipairs iter-names) &until result]
+      (when (= funcname f)
+        (set result true)))
+    result))
 
 (fn iter [it ...]
   "Macro for `:h vim.iter`
