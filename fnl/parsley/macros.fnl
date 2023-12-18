@@ -1,4 +1,5 @@
 ;; fennel-ls: macro-file
+
 (fn return [...]
   (let [return-values#
         (accumulate [str "" _ s (ipairs [...])]

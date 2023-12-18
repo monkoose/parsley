@@ -1,3 +1,5 @@
+;; fennel-ls: macro-file
+
 (fn describe* [name ...]
   `(describe ,name (fn [] ,(unpack [...]))))
 
