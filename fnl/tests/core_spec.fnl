@@ -61,6 +61,16 @@
     (assert.is_false (psl.hash-table? nil))
     (assert.is_false (psl.hash-table? [1 2 3]))))
 
+(describe* "function?"
+  (it* "returns true for a function"
+    (assert.is_true (psl.function? (fn [])))
+    (assert.is_true (psl.function? #($)))
+    (assert.is_true (psl.function? (fn [x] (* x x))) "Empty list is a hash table"))
+  (it* "returns false for not a function"
+    (assert.is_false (psl.function? "hello"))
+    (assert.is_false (psl.function? nil))
+    (assert.is_false (psl.function? [1 2 3]))))
+
 (describe* "empty?"
   (it* "returns true for empty list or nil"
     (assert.is_true (psl.empty? nil))

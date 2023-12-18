@@ -15,6 +15,9 @@
   (and (= (type t) "table")
        (= (length t) 0)))
 
+(fn function? [x]
+  (= (type x) "function"))
+
 (fn even? [n]
   (= (% n 2) 0))
 
@@ -59,6 +62,7 @@
  : string?
  : list?
  : hash-table?
+ : function?
  : even?
  : odd?
  : empty?

@@ -89,71 +89,94 @@ end
 describe("hash-table?", _16_)
 local function _19_()
   local function _20_()
+    local function _21_()
+    end
+    assert.is_true(psl["function?"](_21_))
+    local function _22_(_241)
+      return _241()
+    end
+    assert.is_true(psl["function?"](_22_))
+    local function _23_(x)
+      return (x * x)
+    end
+    return assert.is_true(psl["function?"](_23_), "Empty list is a hash table")
+  end
+  it("returns true for a function", _20_)
+  local function _24_()
+    assert.is_false(psl["function?"]("hello"))
+    assert.is_false(psl["function?"](nil))
+    return assert.is_false(psl["function?"]({1, 2, 3}))
+  end
+  return it("returns false for not a function", _24_)
+end
+describe("function?", _19_)
+local function _25_()
+  local function _26_()
     assert.is_true(psl["empty?"](nil))
     return assert.is_true(psl["empty?"]({}))
   end
-  it("returns true for empty list or nil", _20_)
-  local function _21_()
+  it("returns true for empty list or nil", _26_)
+  local function _27_()
     assert.is_false(psl["empty?"]({1, 2, 3}))
     return assert.is_false(psl["empty?"]({"x"}))
   end
-  return it("returns false for not empty list", _21_)
+  return it("returns false for not empty list", _27_)
 end
-describe("empty?", _19_)
-local function _22_()
+describe("empty?", _25_)
+local function _28_()
   local list = {"a", "b", "c"}
-  local function _23_()
+  local function _29_()
     assert.equal("a", psl.first(list))
     assert["not"].equal("b", psl.first(list))
     return assert["not"].equal("c", psl.first(list))
   end
-  return it("returns first element from a list", _23_)
+  return it("returns first element from a list", _29_)
 end
-describe("first", _22_)
-local function _24_()
+describe("first", _28_)
+local function _30_()
   local list = {"a", "b", "c"}
-  local function _25_()
+  local function _31_()
     assert.equal("b", psl.second(list))
     assert["not"].equal("a", psl.second(list))
     return assert["not"].equal("c", psl.second(list))
   end
-  return it("returns second element from a list", _25_)
+  return it("returns second element from a list", _31_)
 end
-describe("second", _24_)
-local function _26_()
-  local function _27_()
-    local function _28_(_241)
+describe("second", _30_)
+local function _32_()
+  local function _33_()
+    local function _34_(_241)
       return (2 * _241)
     end
-    assert.same({2, 4, 6}, psl.map(_28_, {1, 2, 3}))
-    local function _29_(_241)
+    assert.same({2, 4, 6}, psl.map(_34_, {1, 2, 3}))
+    local function _35_(_241)
       return string.sub(_241, 1, 1)
     end
-    return assert.same({"a", "b", "c"}, psl.map(_29_, {"ab", "bc", "cd"}))
+    return assert.same({"a", "b", "c"}, psl.map(_35_, {"ab", "bc", "cd"}))
   end
-  return it("returns correct list", _27_)
+  return it("returns correct list", _33_)
 end
-describe("map", _26_)
-local function _30_()
-  local function _31_()
-    local function _32_(_241)
+describe("map", _32_)
+local function _36_()
+  local function _37_()
+    local function _38_(_241)
       return psl["odd?"](_241)
     end
-    assert.same({1, 3, 5}, psl.filter(_32_, {1, 2, 3, 4, 5}))
-    local function _33_(_241)
+    assert.same({1, 3, 5}, psl.filter(_38_, {1, 2, 3, 4, 5}))
+    local function _39_(_241)
       return string.find(_241, "^hell")
     end
-    return assert.same({"hello"}, psl.filter(_33_, {"helio", "hello", "good"}))
+    return assert.same({"hello"}, psl.filter(_39_, {"helio", "hello", "good"}))
   end
-  return it("returns correct list", _31_)
+  return it("returns correct list", _37_)
 end
-describe("filter", _30_)
-local function _34_()
-  local function _35_()
+describe("filter", _36_)
+local function _40_()
+  local function _41_()
     assert.equal(3, psl.mod(10, 3))
     assert.equal(0, psl.mod(3, 10))
     return assert.equal(0, psl.mod(0, 3))
   end
-  return it("returns quotient and remainder", _35_)
+  return it("returns quotient and remainder", _41_)
 end
-return describe("mod", _34_)
+return describe("mod", _40_)

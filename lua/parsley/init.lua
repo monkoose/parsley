@@ -10,6 +10,9 @@ end
 local function hash_table_3f(t)
   return ((type(t) == "table") and (#t == 0))
 end
+local function function_3f(x)
+  return (type(x) == "function")
+end
 local function even_3f(n)
   return ((n % 2) == 0)
 end
@@ -62,4 +65,4 @@ end
 local function mod(divident, divisor)
   return math.floor((divident / divisor)), (divident % divisor)
 end
-return {["null?"] = null_3f, ["string?"] = string_3f, ["list?"] = list_3f, ["hash-table?"] = hash_table_3f, ["even?"] = even_3f, ["odd?"] = odd_3f, ["empty?"] = empty_3f, first = first, second = second, map = map, filter = filter, echo = echo, mod = mod}
+return {["null?"] = null_3f, ["string?"] = string_3f, ["list?"] = list_3f, ["hash-table?"] = hash_table_3f, ["function?"] = function_3f, ["even?"] = even_3f, ["odd?"] = odd_3f, ["empty?"] = empty_3f, first = first, second = second, map = map, filter = filter, echo = echo, mod = mod}
