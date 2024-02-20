@@ -11,8 +11,8 @@
 
 (lambda iter-func? [funcname]
   (let [iter-names [:all :any :each :enumerate :filter :find
-                    :fold :last :map :next :nextback :nth
-                    :nthback :peek :peekback :rev :rfind :skip
+                    :flatten :fold :join :last :map :next :nextback
+                    :nth :nthback :peek :peekback :rev :rfind :skip
                     :skipback :slice :take :totable]]
     (var result false)
     (each [_ f (ipairs iter-names) &until result]
